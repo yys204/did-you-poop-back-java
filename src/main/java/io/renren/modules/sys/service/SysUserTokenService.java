@@ -21,9 +21,11 @@ public interface SysUserTokenService extends IService<SysUserTokenEntity> {
 
 	/**
 	 * 生成token
-	 * @param userId  用户ID
+	 *
+	 * @param userId 用户ID
+	 * @param token
 	 */
-	R createToken(long userId);
+	R createToken(long userId, String token);
 
 	/**
 	 * 退出，修改token值

@@ -26,15 +26,11 @@ public class SysUserTokenServiceImpl extends ServiceImpl<SysUserTokenDao, SysUse
 
 
 	@Override
-	public R createToken(long userId) {
-		//生成一个token
-		String token = TokenGenerator.generateValue();
-
+	public R createToken(long userId, String token) {
 		//当前时间
 		Date now = new Date();
 		//过期时间
 		Date expireTime = new Date(now.getTime() + EXPIRE * 1000);
-
 		//判断是否生成过token
 		SysUserTokenEntity tokenEntity = this.getById(userId);
 		if(tokenEntity == null){

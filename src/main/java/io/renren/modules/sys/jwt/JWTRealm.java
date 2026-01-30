@@ -58,9 +58,8 @@ public class JWTRealm extends AuthorizingRealm {
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
         String accessToken = (String) token.getPrincipal();
-
         //根据accessToken，查询用户信息
-        SysUserTokenEntity tokenEntity = shiroService.queryByToken(accessToken);
+        SysUserTokenEntity tokenEntity = shiroService.queryByToken( accessToken.substring(7));
         //token失效
         if(tokenEntity == null || tokenEntity.getExpireTime().getTime() < System.currentTimeMillis()){
             throw new IncorrectCredentialsException("token失效，请重新登录");

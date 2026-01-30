@@ -32,7 +32,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(authorizationInterceptor).addPathPatterns("/app/**");
+        registry.addInterceptor(authorizationInterceptor).addPathPatterns("/app/**", "/v1/**");
     }
 
     @Override

@@ -135,15 +135,20 @@ CREATE TABLE `schedule_job_log` (
 
 -- 用户表
 CREATE TABLE `tb_user` (
-  `user_id` bigint NOT NULL AUTO_INCREMENT,
-  `username` varchar(50) NOT NULL COMMENT '用户名',
-  `mobile` varchar(20) NOT NULL COMMENT '手机号',
-  `password` varchar(64) COMMENT '密码',
-  `create_time` datetime COMMENT '创建时间',
-  PRIMARY KEY (`user_id`),
-  UNIQUE INDEX (`username`)
-) ENGINE=`InnoDB` DEFAULT CHARACTER SET utf8mb4 COMMENT='用户';
-
+                           `user_id` bigint NOT NULL AUTO_INCREMENT COMMENT '用户主键ID',
+                           `username` varchar(50) NOT NULL COMMENT '用户名',
+                           `mobile` varchar(20) NOT NULL COMMENT '手机号',
+                           `password` varchar(64) DEFAULT NULL COMMENT '密码',
+                           `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+                           `wx_openid` varchar(100) DEFAULT NULL COMMENT '微信OpenID',
+                           `age` varchar(3) DEFAULT NULL COMMENT '年龄（字符串类型）',
+                           `gender` varchar(10) DEFAULT NULL COMMENT '性别（字符串类型，如：男/女/未知/保密）',
+                           `wx_nickname` varchar(100) DEFAULT NULL COMMENT '微信昵称',
+                           `wx_avatar` varchar(200) DEFAULT NULL COMMENT '微信头像',
+                           PRIMARY KEY (`user_id`),
+                           UNIQUE INDEX `uk_username` (`username`),
+                           UNIQUE INDEX `uk_wx_openid` (`wx_openid`)
+) ENGINE=InnoDB DEFAULT CHARACTER SET utf8mb4 COMMENT='用户表';
 
 
 

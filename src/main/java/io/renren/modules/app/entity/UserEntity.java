@@ -48,4 +48,26 @@ public class UserEntity implements Serializable {
 	 */
 	private Date createTime;
 
+	/**
+	 * 微信OpenID
+	 */
+	private String wxOpenid;
+
+	/**
+	 * 微信昵称
+	 */
+	private String wxNickname;
+
+	/**
+	 * 微信头像
+	 */
+	private String wxAvatar;
+	/**
+	 * 年龄
+	 */
+	private String age;
+	/**
+	 * 性别
+	 */
+	private String gender;
 }

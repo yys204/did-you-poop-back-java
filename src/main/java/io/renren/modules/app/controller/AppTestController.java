@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Mark sunlightcs@gmail.com
  */
 @RestController
-@RequestMapping("/app")
+@RequestMapping("/v1/user")
 @Api("APP测试接口")
 public class AppTestController {
 
@@ -34,6 +34,8 @@ public class AppTestController {
     @GetMapping("userInfo")
     @ApiOperation("获取用户信息")
     public R userInfo(@LoginUser UserEntity user){
+        // 获取用户信息根据token 信息
+
         return R.ok().put("user", user);
     }
 

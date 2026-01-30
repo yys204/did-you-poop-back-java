@@ -51,12 +51,20 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
         //获取用户凭证
         String token = request.getHeader(jwtUtils.getHeader());
         if(StringUtils.isBlank(token)){
+            token = request.getHeader("Authorization");
+        }
+        if(StringUtils.isBlank(token)){
             token = request.getParameter(jwtUtils.getHeader());
         }
 
         //凭证为空
         if(StringUtils.isBlank(token)){
             throw new RRException(jwtUtils.getHeader() + "不能为空", HttpStatus.UNAUTHORIZED.value());
+        }
+
+        // 处理 Bearer Token
+        if (token.startsWith("Bearer ")) {
+            token = token.substring(7);
         }
 
         Claims claims = jwtUtils.getClaimByToken(token);
